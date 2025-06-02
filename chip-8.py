@@ -25,7 +25,6 @@ def main():
 
     while True:
         clock.tick(60)
-        cpu.pygame_event_handle() # Event handle per la chiusura del gioco
         cpu.cycle()
 
 if __name__ == "__main__": main()

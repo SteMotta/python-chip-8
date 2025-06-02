@@ -5,9 +5,11 @@ import sys
 class Cpu:
 
     def __init__(self, monitor, keyboard):
+        self.buzz_sound = pygame.mixer.Sound("46.wav")
+
         self.monitor = monitor
         self.keyboard = keyboard
-        self.speed = 5
+        self.speed = 10
 
         self.memory = [0] * 4096
 
@@ -30,6 +32,10 @@ class Cpu:
                 self.keyboard.key_down(event.key)
             elif event.type == pygame.KEYUP:
                 self.keyboard.key_up(event.key)
+
+    def play_buzz_sound(self):
+        if self.sound_timer > 0:
+            pygame.mixer.Sound.play(self.buzz_sound)
 
     def load_sprite(self):
         sprite = [
@@ -77,8 +83,10 @@ class Cpu:
             il bitwise >> 8 permette di far diventare la prima parte in un int da 16bit
             es. 1100 0011 >>8 = 1100 0011 0000 0000 | 0011 1100 = 1100 0011 0011 1100 (opcode finale)
             '''
+            self.pygame_event_handle()
             self.execute_opcode(opcode)
         self.update_timer()
+        self.play_buzz_sound()
         self.monitor.render_display()
 
 
