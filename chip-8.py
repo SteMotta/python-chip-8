@@ -39,7 +39,6 @@ def main():
                    'top': 'top',
                    'bottom': 'bottom'})
     button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((400, 150), (200, 30)), text="Apri File", manager=manager)
-
     file_box = pygame_gui.elements.UITextBox(relative_rect=pygame.Rect((400, 350), (200, 30)), html_text="", manager=manager, )
 
 
