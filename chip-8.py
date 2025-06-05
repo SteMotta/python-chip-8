@@ -13,7 +13,6 @@ WIDTH_CHIP, HEIGHT_CHIP = 64, 32
 def select_file():
     filetypes = (
         ('CHIP-8 Rom', '*.ch8'),
-        ('All files', '*.*')
     )
 
     filename = filedialog.askopenfilename(
