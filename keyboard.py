@@ -29,13 +29,13 @@ class Keyboard:
 
         try:
             key = self.key_map[event_key]
-            self.key_pressed[key] = True
+            self.key_pressed[key] = False
         except:
             pass
 
     def key_down(self, event_key):
         try:
             key = self.key_map[event_key]
-            self.key_pressed[key] = False
+            self.key_pressed[key] = True
         except:
             pass

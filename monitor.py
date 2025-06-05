@@ -1,13 +1,15 @@
 import pygame
+from pygame import Color
 
 OFF = (0, 0, 0)
-ON = (255, 255, 255)
 
 WIDTH, HEIGHT = 64, 32
 
 class Monitor:
 
     def __init__(self, scale):
+        self.on = (255, 255, 255)
+
         pygame.display.set_caption('Emulatore Chip-8')
 
         self.scale = scale
@@ -35,6 +37,8 @@ class Monitor:
         self.scale = scale
         self.win = pygame.display.set_mode((WIDTH * scale, HEIGHT * scale))
 
+    def set_colour(self, color: Color):
+        self.on = color
 
     def set_pixel(self, x:int, y:int):
 
@@ -50,7 +54,7 @@ class Monitor:
     def render_display(self):
         for y in range(HEIGHT):
             for x in range(WIDTH):
-                colour = ON if self.display[y][x] else OFF
+                colour = self.on if self.display[y][x] else OFF
                 pygame.draw.rect(self.win, colour, (x * self.scale, y * self.scale, self.scale, self.scale), 0)
                 # rect: [Posizione x del rettangolo, posizione y del rettangolo, larghezza del rettangolo, altezza del rettangolo]
         pygame.display.flip() # Per disegnare a schermo le modifiche
