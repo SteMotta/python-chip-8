@@ -31,6 +31,11 @@ class Monitor:
     def get_resolution(self):
         return WIDTH*self.scale, HEIGHT*self.scale
 
+    def set_scale(self, scale):
+        self.scale = scale
+        self.win = pygame.display.set_mode((WIDTH * scale, HEIGHT * scale))
+
+
     def set_pixel(self, x:int, y:int):
 
         # Necessario nel caso la posizone sia fuori dallo schermo, il pixel verrà settato dal lato opposto dello schermo
